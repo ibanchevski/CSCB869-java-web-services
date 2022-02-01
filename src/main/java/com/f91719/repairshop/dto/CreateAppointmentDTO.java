@@ -2,6 +2,7 @@ package com.f91719.repairshop.dto;
 
 import com.f91719.repairshop.data.entity.RepairShop;
 import com.f91719.repairshop.data.entity.Vehicle;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +19,10 @@ import java.time.LocalDate;
 @ToString
 public class CreateAppointmentDTO {
     private String description;
+
+//    @DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss a")
+//    @JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss a")
+    @DateTimeFormat(pattern = "YYYY-MM-ddTHH:mm:ss")
     private LocalDate date;
 
     @ManyToOne
