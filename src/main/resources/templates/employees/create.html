@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments :: head"></head>
+<body>
+<head th:replace="fragments :: header"></head>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <h1>Add new employee</h1>
+            <form th:action="@{'/repair-shops/' + ${shopId} + '/employees/new'}" th:object="${employee}" method="post">
+                <div class="mb-3">
+                    <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
+                </div>
+                <div class="mb-3">
+                    <label for="qualification">Qualification</label>
+                    <select name="qualification" th:field="*{qualification}" id="qualification" class="form-control">
+                        <option th:each="qualification : ${qualifications}" th:text="${qualification}" th:value="${qualification}"></option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-success">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments :: head"></head>
+<body>
+    <head th:replace="fragments :: header"></head>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset md-4">
+                <h1>Employees</h1>
+            </div>
+        </div>
+
+        <div class="row" th:if="${employees.size()>0}">
+            <div class="col-sm-12">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Qualification</th>
+                        <th scope="col">Shop</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="employee : ${employees}">
+                        <td th:text="${employee.id}"></td>
+                        <td th:text="${employee.name}"></td>
+                        <td th:text="${employee.qualification}"></td>
+                        <td th:text="${employee.repairShop.name}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

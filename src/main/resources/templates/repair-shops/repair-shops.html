@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments :: head"></head>
+<body>
+    <header th:replace="fragments :: header"></header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Repair Shops</h1>
+            </div>
+        </div>
+        <div class="row" th:unless="${repairShops} and ${repairShops.size()}"   >
+            <div class="col-sm-12">
+                <div class="alert alert-info">
+                    <h3>No repair shops!</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row" th:if="${repairShops.size()>0}">
+            <div class="col-sm-12">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="shop : ${repairShops}">
+                        <td th:text="${shop.id}"></td>
+                        <td th:text="${shop.name}"></td>
+                        <td th:text="${shop.address}"></td>
+                        <td>
+                            <a th:href="@{'/repair-shops/' + ${shop.id} + '/employees/new'}" class="btn btn-sm btn-secondary">Add Employee</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
