@@ -20,6 +20,7 @@ public class AppointmentController {
 
     @PostMapping
     public Appointment createAppointment(@RequestBody CreateAppointmentViewModel appointment) {
+        System.out.println("Hit here");
         return appointmentService.create(modelMapper.map(appointment, CreateAppointmentDTO.class));
     }
 }
