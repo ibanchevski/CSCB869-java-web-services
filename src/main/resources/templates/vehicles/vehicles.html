@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments :: head"></head>
+<body>
+<head th:replace="fragments :: header"></head>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset md-4">
+            <h1>Vehicles</h1>
+        </div>
+    </div>
+
+    <div class="row" th:if="${vehicles.size()>0}">
+        <div class="col-sm-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Plate No.</th>
+                    <th scope="col">Man. Date</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="vehicle : ${vehicles}">
+                    <td th:text="${vehicle.id}"></td>
+                    <td th:text="${vehicle.model}"></td>
+                    <td th:text="${vehicle.plateNumber}"></td>
+                    <td th:text="${vehicle.manufactureDate}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
