@@ -18,8 +18,8 @@ import java.time.LocalDateTime;
 public class Appointment extends BaseEntity {
     private String description;
 
-    @DateTimeFormat(pattern = "YYYY-MM-ddTHH:mm:ss")
-    private LocalDateTime date;
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
+    private LocalDate date;
 
     @ManyToOne
     private RepairShop repairShop;
@@ -29,9 +29,6 @@ public class Appointment extends BaseEntity {
 
     @OneToOne
     private User client;
-
-    @OneToOne
-    private User shopOwner;
 
     private boolean completed = false;
 }

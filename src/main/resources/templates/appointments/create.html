@@ -5,8 +5,22 @@
   <header th:replace="fragments :: header"></header>
   <div class="container">
     <div class="row">
-      <div class="col-sm-4 md-offset-4">
+      <div class="col-sm-4 offset-md-4">
         <h3>Create appointment</h3>
+        <form th:action="@{'/appointments/create/' + ${shop.id}}" th:object="${appointment}" method="post">
+          <div class="mb-3">
+            <input type="text" class="form-control" disabled th:value="${shop.name}">
+          </div>
+
+          <div class="mb-3">
+            <input type="text" class="form-control" id="description" th:value="*{description}" placeholder="Description">
+          </div>
+          <div class="mb-3">
+            <input type="date" class="form-control" id="date" th:value="*{date}">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
       </div>
     </div>
   </div>

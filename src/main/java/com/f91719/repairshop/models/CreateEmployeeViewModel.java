@@ -21,6 +21,5 @@ public class CreateEmployeeViewModel {
     @NotNull
     private Qualification qualification;
 
-    @NotNull
     private RepairShop repair_shop;
 }

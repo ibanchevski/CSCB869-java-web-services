@@ -20,7 +20,7 @@
 
                 <div class="mb-3">
                     <label for="repairShop">Repair Shop</label>
-                    <select name="repairShop" th:field="*{repair_shop}" id="repairShop" class="form-control">
+                    <select name="repairShop" id="repairShop" class="form-control" disabled>
                         <option th:each="shop : ${repairShops}" th:text="${shop.name}" th:value="${shop}"></option>
                     </select>
                 </div>

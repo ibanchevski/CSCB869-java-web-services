@@ -20,9 +20,7 @@ import java.time.LocalDate;
 public class CreateAppointmentDTO {
     private String description;
 
-//    @DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss a")
-//    @JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss a")
-    @DateTimeFormat(pattern = "YYYY-MM-ddTHH:mm:ss")
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
     private LocalDate date;
 
     @ManyToOne

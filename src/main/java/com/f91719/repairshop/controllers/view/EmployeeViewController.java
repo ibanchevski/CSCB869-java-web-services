@@ -2,6 +2,7 @@ package com.f91719.repairshop.controllers.view;
 
 import com.f91719.repairshop.data.entity.Employee;
 import com.f91719.repairshop.data.entity.Qualification;
+import com.f91719.repairshop.models.CreateEmployeeViewModel;
 import com.f91719.repairshop.services.EmployeeService;
 import com.f91719.repairshop.services.RepairShopService;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,7 @@ public class EmployeeViewController {
 
     @GetMapping("/create")
     public String getCreateView(Model model) {
-        model.addAttribute("employee", new Employee());
+        model.addAttribute("employee", new CreateEmployeeViewModel());
         model.addAttribute("qualifications", Qualification.values());
         model.addAttribute("repairShops", repairShopService.getAll());
         return "/employees/create";

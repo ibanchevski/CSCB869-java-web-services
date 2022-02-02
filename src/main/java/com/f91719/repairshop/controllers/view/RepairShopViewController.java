@@ -52,7 +52,7 @@ public class RepairShopViewController {
     @PostMapping("/create")
     public String createShop(@ModelAttribute RepairShop repairShop) {
         repairShopService.create(modelMapper.map(repairShop, RepairShopCreateDTO.class));
-        return "redirect:/repair-shops/repair-shops";
+        return "redirect:/repair-shops";
     }
 
     @GetMapping("/update/{id}")
@@ -80,7 +80,7 @@ public class RepairShopViewController {
     }
 
     @PostMapping("/{id}/employees/new")
-    public String showCreateEmployeeView(@PathVariable long id, @Valid @ModelAttribute("employee") CreateEmployeeViewModel employee) {
+    public String showCreateEmployeeView(@PathVariable long id, @ModelAttribute("employee") CreateEmployeeViewModel employee) {
         employee.setRepair_shop(repairShopService.getRepairShopById(id));
         employeeService.create(modelMapper.map(employee, CreateEmployeeDTO.class));
         return "redirect:/repair-shops";

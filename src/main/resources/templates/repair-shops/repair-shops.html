@@ -33,8 +33,11 @@
                             <td th:text="${shop.name}"></td>
                             <td th:text="${shop.address}"></td>
                             <td>
-                                <a th:href="@{'/repair-shops/' + ${shop.id} + '/employees/new'}" class="btn btn-sm btn-secondary">
+                                <a sec:authorize="hasAuthority('ADMIN')" th:href="@{'/repair-shops/' + ${shop.id} + '/employees/new'}" class="btn btn-sm btn-secondary">
                                     Add Employee
+                                </a>
+                                <a sec:authorize="hasAuthority('CLIENT')" th:href="@{'/appointments/create/' + ${shop.id}}" class="btn btn-sm btn-secondary">
+                                    Appointments
                                 </a>
                             </td>
                         </tr>

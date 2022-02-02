@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments :: head"></head>
+<body>
+<head th:replace="fragments :: header"></head>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <h1>Add new vehicle</h1>
+      <form th:action="@{'/vehicles/create'}" th:object="${vehicle}" method="post">
+        <div class="mb-3">
+          <input type="text" th:field="*{model}" class="form-control" id="model" placeholder="Model">
+        </div>
+        <div class="mb-3">
+          <input type="text" th:field="*{plateNumber}" class="form-control" id="plateNumber" placeholder="PlateNumber">
+        </div>
+
+        <div class="mb-3">
+          <label for="manDate">Manufacture Date</label>
+          <input type="date" th:field="*{manufactureDate}" class="form-control" id="manDate">
+        </div>
+
+        <button type="submit" class="btn btn-success">Create</button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
