@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments :: head"></head>
+<body>
+    <header th:replace="fragments :: header"></header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-warning">You are unauthorised to view this page!</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/repair-shops">Go to shops</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Go to login</a>
+                    </li>
+                </nav>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,6 +1,9 @@
 package com.f91719.repairshop.controllers.view;
 
+import com.f91719.repairshop.data.entity.Employee;
+import com.f91719.repairshop.data.entity.Qualification;
 import com.f91719.repairshop.services.EmployeeService;
+import com.f91719.repairshop.services.RepairShopService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +15,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/employees")
 public class EmployeeViewController {
     private final EmployeeService employeeService;
+    private final RepairShopService repairShopService;
 
     @GetMapping
     public String employeesView(Model model) {
         model.addAttribute("employees", employeeService.findAll());
         return "/employees/index";
+    }
+
+    @GetMapping("/create")
+    public String getCreateView(Model model) {
+        model.addAttribute("employee", new Employee());
+        model.addAttribute("qualifications", Qualification.values());
+        model.addAttribute("repairShops", repairShopService.getAll());
+        return "/employees/create";
     }
 }

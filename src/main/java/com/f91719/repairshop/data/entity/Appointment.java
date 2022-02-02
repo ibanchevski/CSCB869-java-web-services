@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 public class Appointment extends BaseEntity {
     private String description;
 
-//    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     @DateTimeFormat(pattern = "YYYY-MM-ddTHH:mm:ss")
     private LocalDateTime date;
 
@@ -27,6 +26,12 @@ public class Appointment extends BaseEntity {
 
     @OneToOne
     private Vehicle vehicle;
+
+    @OneToOne
+    private User client;
+
+    @OneToOne
+    private User shopOwner;
 
     private boolean completed = false;
 }

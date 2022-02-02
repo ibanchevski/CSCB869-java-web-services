@@ -15,27 +15,45 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav mb-2 w-100">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" aria-current="page" href="/repair-shops">Repair Shops</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                            <a class="nav-link" href="/employees">Employees</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="/appointments">Appointments</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/repair-shops/create" class="nav-link">New repair shop</a>
+                        <li class="nav-item" sec:authorize="hasAuthority('CLIENT')">
+                            <a class="nav-link" href="/vehicles">Vehicles</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown me-auto">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                                Create
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li sec:authorize="hasAuthority('ADMIN')">
+                                    <a href="/repair-shops/create" class="nav-link">Repair shop</a>
+                                </li>
+                                <li sec:authorize="hasAuthority('ADMIN')">
+                                    <a href="/employees/create" class="nav-link">Employee</a>
+                                </li>
+                                <li sec:authorize="hasAuthority('CLIENT')">
+                                    <a href="/vehicles/create" class="nav-link">Vehicle</a>
+                                </li>
                             </ul>
                         </li>
+                        <ul class="nav" sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-primary">
+                                    <span sec:authentication="name"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Log out</a>
+                            </li>
+                        </ul>
                     </ul>
                 </div>
             </div>

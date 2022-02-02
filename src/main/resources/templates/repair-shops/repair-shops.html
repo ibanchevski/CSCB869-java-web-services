@@ -28,14 +28,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="shop : ${repairShops}">
-                        <td th:text="${shop.id}"></td>
-                        <td th:text="${shop.name}"></td>
-                        <td th:text="${shop.address}"></td>
-                        <td>
-                            <a th:href="@{'/repair-shops/' + ${shop.id} + '/employees/new'}" class="btn btn-sm btn-secondary">Add Employee</a>
-                        </td>
-                    </tr>
+                        <tr th:each="shop : ${repairShops}">
+                            <td th:text="${shop.id}"></td>
+                            <td th:text="${shop.name}"></td>
+                            <td th:text="${shop.address}"></td>
+                            <td>
+                                <a th:href="@{'/repair-shops/' + ${shop.id} + '/employees/new'}" class="btn btn-sm btn-secondary">
+                                    Add Employee
+                                </a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

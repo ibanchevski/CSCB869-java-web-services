@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body>
     <head th:replace="fragments :: header"></head>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 offset md-4">
                 <h1>Employees</h1>
@@ -27,7 +27,9 @@
                         <td th:text="${employee.id}"></td>
                         <td th:text="${employee.name}"></td>
                         <td th:text="${employee.qualification}"></td>
-                        <td th:text="${employee.repairShop.name}"></td>
+                        <td>
+                            <span th:if="${employee.repairShop}" th:text="${employee.repairShop.name}"></span>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

@@ -1,5 +1,6 @@
 package com.f91719.repairshop.controllers.view;
 
+import com.f91719.repairshop.data.entity.Employee;
 import com.f91719.repairshop.data.entity.Qualification;
 import com.f91719.repairshop.data.entity.RepairShop;
 import com.f91719.repairshop.dto.CreateEmployeeDTO;
@@ -17,6 +18,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -66,18 +69,18 @@ public class RepairShopViewController {
 
     @GetMapping("/{id}/employees/new")
     public String showCreateEmployeeView(Model model, @PathVariable long id) {
-        CreateEmployeeViewModel employeeViewModel = new CreateEmployeeViewModel();
-        employeeViewModel.setRepair_shop(repairShopService.getRepairShopById(id));
+        List<RepairShop> repairShops = new ArrayList<>();
+        repairShops.add(repairShopService.getRepairShopById(id));
 
         model.addAttribute("shopId", id);
-        model.addAttribute("employee", new CreateEmployeeViewModel());
+        model.addAttribute("employee", new Employee());
         model.addAttribute("qualifications", Qualification.values());
-
+        model.addAttribute("repairShops", repairShops);
         return "/employees/create";
     }
 
     @PostMapping("/{id}/employees/new")
-    public String showCreateEmployeeView(@PathVariable long id, CreateEmployeeViewModel employee) {
+    public String showCreateEmployeeView(@PathVariable long id, @Valid @ModelAttribute("employee") CreateEmployeeViewModel employee) {
         employee.setRepair_shop(repairShopService.getRepairShopById(id));
         employeeService.create(modelMapper.map(employee, CreateEmployeeDTO.class));
         return "redirect:/repair-shops";

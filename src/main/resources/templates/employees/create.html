@@ -18,6 +18,13 @@
                     </select>
                 </div>
 
+                <div class="mb-3">
+                    <label for="repairShop">Repair Shop</label>
+                    <select name="repairShop" th:field="*{repair_shop}" id="repairShop" class="form-control">
+                        <option th:each="shop : ${repairShops}" th:text="${shop.name}" th:value="${shop}"></option>
+                    </select>
+                </div>
+
                 <button type="submit" class="btn btn-success">Create</button>
             </form>
         </div>
